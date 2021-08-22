@@ -1,0 +1,39 @@
+.app-header {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.header__wrapper {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 50;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.app-header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+  min-height: var(--header-height);
+}
+
+.app-header__logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  letter-spacing: 0.1rem;
+}
+
+.app-header__logo svg {
+  margin-left: -8px;
+}
+
+.app-header__logo-text {
+  font-size: 2rem;
+  color: var(--main-red-color);
+}

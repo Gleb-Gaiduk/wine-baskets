@@ -1,0 +1,20 @@
+:root {
+  --main-grey-color: #777777;
+  --main-red-color: #a53e4c;
+  --dark-red-color: #88252d;
+  --main-gold-color: #c0a483;
+  --main-black-color: #111111;
+
+  --main-font-color: var(--main-grey-color);
+
+  --container-max-width: 1800px;
+  --header-height: 85px;
+
+  --main-font-family: 'Marcellus', serif;
+  --secondary-font-family: 'Open Sans', sans-serif;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,11 @@
+.first-screen {
+  display: flex;
+  flex-direction: column;
+}
+
+.first-screen__body {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+}

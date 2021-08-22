@@ -1,0 +1,51 @@
+.wine-carousel-item {
+}
+
+.wine-carousel-item__img-wrapper {
+  border-radius: 50%;
+  width: 226px;
+  height: 226px;
+}
+
+.wine-carousel-item__inter-layer {
+  background-color: rgba(0, 0, 0, 0.25);
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: 1s;
+  cursor: pointer;
+}
+
+.wine-carousel-item__add-btn {
+  opacity: 0;
+  visibility: hidden;
+  transition: 1s;
+}
+
+.wine-carousel-item__img-wrapper:hover .wine-carousel-item__inter-layer,
+.wine-carousel-item__img-wrapper:hover .wine-carousel-item__add-btn {
+  opacity: 1;
+  visibility: unset;
+}
+
+.wine-carousel-item__image {
+  position: relative;
+}
+
+.wine-carousel-item__title {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 0;
+  color: #fff;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  font-size: 1.1rem;
+}

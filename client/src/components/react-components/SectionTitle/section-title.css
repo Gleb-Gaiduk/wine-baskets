@@ -1,0 +1,9 @@
+.section-title {
+  text-align: center;
+}
+
+.section-title__text {
+  color: #fff;
+  margin-bottom: -20px;
+  font-weight: 400;
+}

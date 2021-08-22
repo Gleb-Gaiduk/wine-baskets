@@ -1,0 +1,27 @@
+.offer-block {
+  width: calc((640 / 1770) * 100%);
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 6px;
+  border: 1px solid var(--main-gold-color);
+}
+
+.offer-block__container {
+  padding: 20px;
+}
+
+.offer-block__text {
+  font-size: 3.75rem;
+  color: var(--main-black-color);
+  margin-bottom: 30px;
+}
+
+.offer-block__title {
+  display: inline;
+  font-size: 4.6875rem;
+  color: var(--dark-red-color);
+}
+
+.offer-block__btn-wrapper {
+  display: flex;
+  justify-content: center;
+}
