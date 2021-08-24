@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "target": "es2017",
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "module": "commonjs",
+    // "noImplicitAny": true,
+    "removeComments": true
+  },
+  "include": ["./**/*.ts"],
+  "exclude": ["node_modules"]
+}
