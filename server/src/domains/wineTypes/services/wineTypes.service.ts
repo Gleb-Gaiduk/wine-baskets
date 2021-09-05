@@ -88,16 +88,15 @@ class WineTypesService
         id
       );
 
-      if (!isExistingTypeRecord) {
+      if (!isExistingTypeRecord)
         throw new DBPropertyNotExistError('wine_type_id');
-      } else {
-        const removedWineType = await dbConfig.query(
-          'DELETE FROM wine_type WHERE wine_type_id = $1',
-          [id]
-        );
 
-        return removedWineType.rows[0];
-      }
+      const removedWineType = await dbConfig.query(
+        'DELETE FROM wine_type WHERE wine_type_id = $1',
+        [id]
+      );
+
+      return removedWineType.rows[0];
     } catch (err) {
       Logger.error(err.message);
       return err;
@@ -112,14 +111,14 @@ class WineTypesService
         id
       );
 
-      if (!isExistingTypeRecord) {
-      } else {
-        const updateWineType = await dbConfig.query(
-          'UPDATE wine_type SET "type" = $2 WHERE wine_type_id = $1 RETURNING *',
-          [id, type]
-        );
-        return updateWineType.rows[0];
-      }
+      if (!isExistingTypeRecord)
+        throw new DBPropertyNotExistError('wine_type_id');
+
+      const updateWineType = await dbConfig.query(
+        'UPDATE wine_type SET "type" = $2 WHERE wine_type_id = $1 RETURNING *',
+        [id, type]
+      );
+      return updateWineType.rows[0];
     } catch (err) {
       Logger.error(err.message);
       return err;

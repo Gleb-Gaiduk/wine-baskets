@@ -1,6 +1,7 @@
 import dbConfig from '@srcPath/common/db/db.config';
 import { isExistingDbProperty } from '@srcPath/common/db/db.utils';
 import Logger from '@srcPath/common/loaders/logger.loader';
+import { createHashedPassword } from '@srcPath/common/utils/password.utils';
 import { CRUD } from '@srcPath/domains/wineTypes/interfaces/crud.interface';
 import {
   TCreateUser,
@@ -33,9 +34,11 @@ class UsersServices
   }: IUserFromClient): Promise<TCreateUser> {
     try {
       const createdOn = new Date(Date.now()).toUTCString();
+      const hashedPassword = await createHashedPassword(password);
+
       const newUser = await dbConfig.query(
         'INSERT INTO "user" (first_name, last_name, email, password, phone, created_on) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
-        [firstName, lastName, email, password, phone, createdOn]
+        [firstName, lastName, email, hashedPassword, phone, createdOn]
       );
 
       return newUser.rows[0];
@@ -48,15 +51,13 @@ class UsersServices
     try {
       const isExistingUser = await isExistingDbProperty('user', 'user_id', id);
 
-      if (!isExistingUser) {
-        throw new DBPropertyNotExistError('user_id');
-      } else {
-        const user = await dbConfig.query(
-          'SELECT * FROM "user" WHERE user_id = $1',
-          [id]
-        );
-        return user.rows[0];
-      }
+      if (!isExistingUser) throw new DBPropertyNotExistError('user_id');
+
+      const user = await dbConfig.query(
+        'SELECT * FROM "user" WHERE user_id = $1',
+        [id]
+      );
+      return user.rows[0];
     } catch (err) {
       Logger.error(err.message);
       return err;
@@ -70,15 +71,12 @@ class UsersServices
     try {
       const isExistingUser = await isExistingDbProperty('user', 'user_id', id);
 
-      if (!isExistingUser) {
-        throw new DBPropertyNotExistError('user_id');
-      } else {
-        const updatedUser = await dbConfig.query(
-          'UPDATE "user" SET first_name = $1, last_name = $2, email = $3, password = $4, phone = $5 WHERE user_id = $6 RETURNING *',
-          [firstName, lastName, email, password, phone, id]
-        );
-        return updatedUser.rows[0];
-      }
+      if (!isExistingUser) throw new DBPropertyNotExistError('user_id');
+      const updatedUser = await dbConfig.query(
+        'UPDATE "user" SET first_name = $1, last_name = $2, email = $3, password = $4, phone = $5 WHERE user_id = $6 RETURNING *',
+        [firstName, lastName, email, password, phone, id]
+      );
+      return updatedUser.rows[0];
     } catch (err) {
       Logger.error(err.message);
       return err;
@@ -89,15 +87,12 @@ class UsersServices
     try {
       const isExistingUser = await isExistingDbProperty('user', 'user_id', id);
 
-      if (!isExistingUser) {
-        throw new DBPropertyNotExistError('user_id');
-      } else {
-        const removedUser = await dbConfig.query(
-          'DELETE FROM "user" WHERE user_id = $1',
-          [id]
-        );
-        return removedUser.rows[0];
-      }
+      if (!isExistingUser) throw new DBPropertyNotExistError('user_id');
+      const removedUser = await dbConfig.query(
+        'DELETE FROM "user" WHERE user_id = $1',
+        [id]
+      );
+      return removedUser.rows[0];
     } catch (err) {
       Logger.error(err.message);
       return err;
