@@ -1,0 +1,5 @@
+1) User opens a home page;
+2) User can see the main screen with 'Create Wine Basket" button;
+3) Clicking 'Create Wine Basket" button user is directed to the basket type page with 3 basket variants;
+4) Selecting a basket type user is directed to wines page;
+5) 

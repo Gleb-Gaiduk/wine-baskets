@@ -2,7 +2,7 @@ import dbConfig from '@srcPath/common/db/db.config';
 import { isExistingDbProperty } from '@srcPath/common/db/db.utils';
 import { DBPropertyNotExistError } from '@srcPath/common/errors/DBValidation.error';
 import Logger from '@srcPath/common/loaders/logger.loader';
-import { CRUD } from '@srcPath/domains/wineTypes/interfaces/crud.interface';
+import { CRUD } from '@srcPath/domains/wine/wineTypes/interfaces/crud.interface';
 import {
   ICreateWineType,
   TCreateWineType,
@@ -10,7 +10,7 @@ import {
   TGetWineTypeById,
   TGetWineTypes,
   TPutWineType,
-} from '@srcPath/domains/wineTypes/interfaces/wineType.interface';
+} from '@srcPath/domains/wine/wineTypes/interfaces/wineType.interface';
 
 class WineTypesService
   implements

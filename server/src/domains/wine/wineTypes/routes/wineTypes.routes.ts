@@ -3,11 +3,11 @@ import {
   WINE_TYPES_ROUTE,
   WINE_TYPE_ROUTE,
 } from '@srcPath/common/routes/constants.routes';
-import wineTypesController from '@srcPath/domains/wineTypes/controllers/wineTypes.controller';
-import wineTypesMiddleware from '@srcPath/domains/wineTypes/middlewares/wineTypes.middleware';
+import wineTypesController from '@srcPath/domains/wine/wineTypes/controllers/wineTypes.controller';
+import wineTypesMiddleware from '@srcPath/domains/wine/wineTypes/middlewares/wineTypes.middleware';
 import { Application } from 'express';
 import { body, param } from 'express-validator';
-import CommonRoutesConfig from '../../../common/routes/common.routes';
+import CommonRoutesConfig from '../../../../common/routes/common.routes';
 
 class WineTypesRoutes extends CommonRoutesConfig {
   constructor(app: Application) {

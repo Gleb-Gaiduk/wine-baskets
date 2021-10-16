@@ -1,6 +1,11 @@
+import config from '@srcPath/common/config';
+import errorMiddleware from '@srcPath/common/middlewares/error.middleware';
 import loadAppRoutes from '@srcPath/common/routes';
+import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import express, { Request, Response } from 'express';
+import sessions from 'express-session';
+import { oneDayMilliSec } from '../utils/constants';
 
 export default app => {
   // Health check: @Todo read more on that, consider taking this logic out
@@ -22,31 +27,22 @@ export default app => {
   // Transforms the raw string of req.body into json
   app.use(express.json());
 
+  app.use(cookieParser());
+
+  app.use(express.urlencoded({ extended: true }));
+
+  // Session middleware
+  app.use(
+    sessions({
+      secret: config.session.secretKey,
+      saveUninitialized: true,
+      cookie: { maxAge: config.session.expirationDays * oneDayMilliSec },
+      resave: false,
+    })
+  );
+
   // Load API routes
-  // app.use(config.api.prefix, routes());
   loadAppRoutes(app);
 
-  // Catch 404 and forward to error handler
-  app.use((req, res, next) => {
-    const err = new Error('Not found');
-    err['status'] = 404;
-    return next(err);
-  });
-
-  // Handle 401 thrown by express-jwt library
-  app.use((err, req, res, next) => {
-    if (err.name === 'UnauthorizedError') {
-      return res.status(err.status).send({ message: err.message }).end();
-    }
-    return next(err);
-  });
-
-  app.use((err, req, res, next) => {
-    res.status(err.status || 500);
-    res.json({
-      errors: {
-        message: err.message,
-      },
-    });
-  });
+  app.use(errorMiddleware);
 };

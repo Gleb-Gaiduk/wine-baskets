@@ -1,6 +1,6 @@
-import wineTypesService from '@srcPath/domains/wineTypes/services/wineTypes.service';
+import wineTypesService from '@srcPath/domains/wine/wineTypes/services/wineTypes.service';
 import { Request, Response } from 'express';
-import { DBPropertyNotExistError } from './../../../common/errors/DBValidation.error';
+import { DBPropertyNotExistError } from '../../../../common/errors/DBValidation.error';
 
 class WineTypesController {
   async getWineTypes(req: Request, res: Response) {

@@ -1,3 +1,4 @@
+import ApiError from '@srcPath/common/errors/api.error';
 import { NextFunction, Request, Response } from 'express';
 import { validationResult } from 'express-validator';
 
@@ -6,10 +7,15 @@ class BodyValidationMiddleware {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      res.status(400).send(errors.array()[0].msg);
+      return next(
+        ApiError.BadRequest(
+          'Body payload validation is failed, check passed data',
+          errors.array()
+        )
+      );
     }
 
-    next();
+    return next();
   }
 }
 

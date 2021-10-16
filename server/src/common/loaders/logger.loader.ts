@@ -30,4 +30,9 @@ const LoggerInstance = winston.createLogger({
   transports,
 });
 
+export const logErrorWithFilePath = <T extends Error>(
+  errorObject: T
+): winston.Logger =>
+  LoggerInstance.error(`${__filename}: ${errorObject.message}`);
+
 export default LoggerInstance;

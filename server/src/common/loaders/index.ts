@@ -3,8 +3,6 @@ import expressLoader from './express.loader';
 import Logger from './logger.loader';
 
 export default async ({ expressApp }) => {
-  // Connect db here
-
   await expressLoader(expressApp);
   Logger.info('✌️ Express loaded');
 };

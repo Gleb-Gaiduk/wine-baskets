@@ -7,14 +7,13 @@ export const createHashedPassword = async (
   return await bcrypt.hash(clientPassword, saltRounds);
 };
 
-// async function checkUser(username, password) {
-//   //... fetch user from a db etc.
-
-//   const match = await bcrypt.compare(password, user.passwordHash);
-
-//   if (match) {
-//     //login
-//   }
-
-//   //...
-// }
+export const verifyPasswordMatches = async (
+  clientPassword: string,
+  hashedPassword: string
+): Promise<boolean> => {
+  const isMatchedPassword = await bcrypt.compare(
+    clientPassword,
+    hashedPassword
+  );
+  return isMatchedPassword;
+};

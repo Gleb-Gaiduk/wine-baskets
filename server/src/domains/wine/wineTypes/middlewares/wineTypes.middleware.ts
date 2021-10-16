@@ -1,4 +1,4 @@
-import wineTypesService from '@srcPath/domains/wineTypes/services/wineTypes.service';
+import wineTypesService from '@srcPath/domains/wine/wineTypes/services/wineTypes.service';
 import { NextFunction, Request, Response } from 'express';
 
 class WineTypesMiddleware {
