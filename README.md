@@ -1,6 +1,7 @@
 # wine-baskets
 
-Application development has been still in progress.
+Application development is still in progress.
+Link to database model: https://drive.google.com/file/d/1v4vZH7Z84kygxVqdv5epJidb_GfxcX7a/view?usp=sharing
 
 Goals:
 To create a production-level Client - Server application for wine baskets gifts ordering built on PERN stack + TypeScript.
