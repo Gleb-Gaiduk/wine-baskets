@@ -1,11 +1,9 @@
-import config from '@srcPath/common/config';
 import errorMiddleware from '@srcPath/common/middlewares/error.middleware';
 import loadAppRoutes from '@srcPath/common/routes';
+import sessionMiddleware from '@srcPath/domains/session/middlewares/session.middleware';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import express, { Request, Response } from 'express';
-import sessions from 'express-session';
-import { oneDayMilliSec } from '../utils/constants';
 
 export default app => {
   // Health check: @Todo read more on that, consider taking this logic out
@@ -31,18 +29,12 @@ export default app => {
 
   app.use(express.urlencoded({ extended: true }));
 
-  // Session middleware
-  app.use(
-    sessions({
-      secret: config.session.secretKey,
-      saveUninitialized: true,
-      cookie: { maxAge: config.session.expirationDays * oneDayMilliSec },
-      resave: false,
-    })
-  );
+  // Session middleware config
+  sessionMiddleware(app);
 
   // Load API routes
   loadAppRoutes(app);
 
+  // Error middleware
   app.use(errorMiddleware);
 };
