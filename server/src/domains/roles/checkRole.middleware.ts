@@ -1,7 +1,7 @@
 import ApiError from '@srcPath/common/errors/api.error';
 import tokenService from '@srcPath/domains/token/services/token.service';
 import { NextFunction, Request, Response } from 'express';
-import { TAccessRole } from './../interfaces/roles.interface';
+import { TAccessRole } from './roles.interface';
 
 const checkRole =
   (roles: Array<TAccessRole>) =>

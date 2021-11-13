@@ -1,6 +1,6 @@
 import config from '@srcPath/common/config';
 import dbConfig from '@srcPath/common/db/db.config';
-import { IUserTokenPayload } from '@srcPath/domains/users/interfaces/user.interface';
+import { IUserTokenPayload } from '@srcPath/domains/users/user.interface';
 import jwt from 'jsonwebtoken';
 import { isEmpty } from 'lodash';
 

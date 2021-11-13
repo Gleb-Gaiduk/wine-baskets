@@ -1,6 +1,6 @@
 import config from '@srcPath/common/config';
 import { NextFunction, Request, Response } from 'express';
-import usersService from '../services/users.service';
+import usersService from './services/users.service';
 class UsersController {
   async getUsers(req: Request, res: Response, next: NextFunction) {
     const limit: number = req.query.limit ? +req.query.limit : 10;

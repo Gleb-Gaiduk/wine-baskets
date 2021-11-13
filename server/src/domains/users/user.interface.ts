@@ -1,6 +1,6 @@
-import { TAccessRole } from '@srcPath/domains/roles/interfaces/roles.interface';
+import { TAccessRole } from '@srcPath/domains/roles/roles.interface';
 import { TTokens } from '@srcPath/domains/token/interfaces/token.interfaces';
-import { DBPropertyNotExistError } from './../../../common/errors/DBValidation.error';
+import { DBPropertyNotExistError } from '../../common/errors/DBValidation.error';
 
 export interface IUserFromClient {
   firstName: string;

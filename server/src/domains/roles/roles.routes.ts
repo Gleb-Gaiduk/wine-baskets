@@ -4,7 +4,7 @@ import CommonRoutesConfig from '@srcPath/common/routes/common.routes';
 import { ROLES_ROUTE } from '@srcPath/common/routes/constants.routes';
 import { Application } from 'express';
 import { body } from 'express-validator';
-import rolesController from '../controllers/roles.controller';
+import rolesController from './roles.controller';
 
 class RolesRoutes extends CommonRoutesConfig {
   constructor(app: Application) {

@@ -5,7 +5,7 @@ import {
   TAccessRole,
   TCreateRole,
   TGetRoles,
-} from '../interfaces/roles.interface';
+} from './roles.interface';
 
 class RolesService {
   async getAll(): Promise<TGetRoles> {

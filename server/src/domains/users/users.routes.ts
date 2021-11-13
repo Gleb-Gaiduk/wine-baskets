@@ -7,11 +7,11 @@ import {
   USERS_ROUTE,
   USER_ROUTE,
 } from '@srcPath/common/routes/constants.routes';
-import checkIsAuthorized from '@srcPath/domains/auth/middleware/checkIsAuth.middleware';
-import checkRole from '@srcPath/domains/roles/middleware/checkRole.middleware';
+import checkIsAuthorized from '@srcPath/domains/auth/checkIsAuth.middleware';
+import checkRole from '@srcPath/domains/roles/checkRole.middleware';
 import { Application } from 'express';
 import { body, param } from 'express-validator';
-import usersController from '../controllers/users.controller';
+import usersController from './users.controller';
 
 class UsersRoutes extends CommonRoutesConfig {
   constructor(app: Application) {

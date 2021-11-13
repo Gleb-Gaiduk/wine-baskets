@@ -1,6 +1,6 @@
-import { TAccessRole } from '@srcPath/domains/roles/interfaces/roles.interface';
-import { TTokens } from './../../token/interfaces/token.interfaces';
-import { IUserFromDB, IUserTokenPayload } from './../interfaces/user.interface';
+import { TAccessRole } from '@srcPath/domains/roles/roles.interface';
+import { TTokens } from '../token/interfaces/token.interfaces';
+import { IUserFromDB, IUserTokenPayload } from './user.interface';
 
 export class UserTokenDTO implements IUserTokenPayload {
   id: number;

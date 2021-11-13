@@ -8,7 +8,7 @@ import {
 } from '@srcPath/common/routes/constants.routes';
 import { Application } from 'express';
 import { body } from 'express-validator';
-import authController from '../controllers/auth.controller';
+import authController from './auth.controller';
 
 class AuthRoutes extends CommonRoutesConfig {
   constructor(app: Application) {
