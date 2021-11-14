@@ -1,8 +1,14 @@
 export default class ApiError extends Error {
   readonly name: string;
   readonly status: number;
+  readonly errors: unknown[] | [];
 
-  constructor(name: string, status: number, message: string) {
+  constructor(
+    name: string,
+    status: number,
+    message: string,
+    errors: unknown[] | [] = []
+  ) {
     super(message);
 
     // Restore prototype chain
@@ -10,14 +16,17 @@ export default class ApiError extends Error {
 
     this.name = name;
     this.status = status;
+    this.message = message;
+    this.errors = errors;
 
     Error.captureStackTrace(this);
   }
 
   static BadRequest(
-    message = 'The server could not understand the request due to invalid syntax.'
+    message = 'The server could not understand the request due to invalid syntax.',
+    errors = []
   ) {
-    return new ApiError('Bad Request', 400, message);
+    return new ApiError('Bad Request', 400, message, errors);
   }
 
   static UnauthorizedError() {

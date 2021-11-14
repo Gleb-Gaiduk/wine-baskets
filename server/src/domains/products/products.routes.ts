@@ -4,6 +4,7 @@ import { productRoutes } from '@srcPath/common/routes/constants.routes';
 import productsController from '@srcPath/domains/products/products.controller';
 import { Application } from 'express';
 import { body, param } from 'express-validator';
+import { validateProductPayload } from './products.validation';
 
 class ProductsRoutes extends CommonRoutesConfig {
   constructor(app: Application) {
@@ -17,14 +18,9 @@ class ProductsRoutes extends CommonRoutesConfig {
       .get(productsController.getProducts)
 
       .post(
-        body('type')
-          .isString()
-          .withMessage(
-            'Invalid "type" parameter: value should be of a string type'
-          ),
-        BodyValidationMiddleware.verifyBodyFieldsErrors
-
-        // productsController.createProduct
+        validateProductPayload(),
+        BodyValidationMiddleware.verifyBodyFieldsErrors,
+        productsController.createProduct
       );
 
     this.app

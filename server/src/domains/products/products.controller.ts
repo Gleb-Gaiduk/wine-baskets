@@ -23,10 +23,15 @@ class ProductsController {
     }
   }
 
-  async createProduct(req: Request, res: Response) {
+  async createProduct(req: Request, res: Response, next: NextFunction) {
     const productPayloadBody = req.body;
-    const newProduct = await productsService.create(productPayloadBody);
-    res.status(201).json(newProduct);
+
+    try {
+      const newProduct = await productsService.create(productPayloadBody);
+      res.status(201).json(newProduct);
+    } catch (err) {
+      next(err);
+    }
   }
 
   // async removeProductById(req: Request, res: Response) {

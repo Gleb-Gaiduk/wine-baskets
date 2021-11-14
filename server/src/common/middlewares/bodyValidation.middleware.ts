@@ -9,8 +9,8 @@ class BodyValidationMiddleware {
     if (!errors.isEmpty()) {
       return next(
         ApiError.BadRequest(
-          // To do, show errors.array() in a better way
-          `Body payload validation is failed, check passed data: ${errors.array()}`
+          'Body payload validation is failed, check passed data.',
+          errors.array()
         )
       );
     }

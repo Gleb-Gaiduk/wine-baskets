@@ -1,14 +1,15 @@
 import config from '@srcPath/common/config';
+import { CRUD } from '@srcPath/common/db/crud.interface';
 import dbConfig from '@srcPath/common/db/db.config';
 import { isExistingDbProperty } from '@srcPath/common/db/db.utils';
 import ApiError from '@srcPath/common/errors/api.error';
 import { createHashedPassword } from '@srcPath/common/utils/password.utils';
-import { CRUD } from '@srcPath/domains/products/interfaces/crud.interface';
 import rolesService from '@srcPath/domains/roles/roles.service';
 import tokenService from '@srcPath/domains/token/services/token.service';
 import { v4 } from 'uuid';
 import { UserFromDbDTO, UserTokenDTO } from '../user.dto';
 import {
+  IUserFromClient,
   TCreateUser,
   TDeleteUser,
   TGetUserById,
@@ -16,7 +17,6 @@ import {
   TPutUser,
 } from '../user.interface';
 import { DBPropertyNotExistError } from './../../../common/errors/DBValidation.error';
-import { IUserFromClient } from '../user.interface';
 import mailService from './mail.service';
 
 class UsersServices
