@@ -2,6 +2,11 @@ import config from '@srcPath/common/config';
 import Logger from '@srcPath/common/loaders/logger.loader';
 import { Pool } from 'pg';
 
+type TDbQueryResponse = {
+  rows: any[];
+  [key: string]: any;
+};
+
 class dbConfig {
   static pool: Pool = new Pool({
     user: config.db.user,
@@ -11,7 +16,10 @@ class dbConfig {
     database: config.db.name,
   });
 
-  public async query(sqlQuery: string, params: Array<unknown> | null = null) {
+  public async query(
+    sqlQuery: string,
+    params: Array<unknown> | null = null
+  ): Promise<TDbQueryResponse> {
     const startTimePoint = Date.now();
     const result = await dbConfig.pool.query(sqlQuery, params);
     const queryDuration = Date.now() - startTimePoint;

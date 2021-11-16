@@ -26,18 +26,6 @@ export class ProductFromDbDTO implements TPostProductRes {
     this.productImageSrc = model.image_path;
     this.productPrice = model.item_price;
     this.productCategory = model.productCategory;
-    this.productProperties = ProductFromDbDTO.transformProductProperties(
-      model.productProperties
-    );
-  }
-
-  static transformProductProperties(
-    properties: TPropertiesFromDb
-  ): TTransformedProperties {
-    return properties.map(property => ({
-      propertyName: property.property_type,
-      propertyValue: property.property_name,
-      propertyDescription: property.property_description,
-    }));
+    this.productProperties = model.productProperties;
   }
 }

@@ -36,3 +36,10 @@ CREATE TABLE ProductCategory_Product (
  product_category_id INT REFERENCES ProductCategory (id) ON UPDATE CASCADE ON DELETE CASCADE,
  product_id INT REFERENCES Product (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
+
+CREATE TABLE ProductProperty_Product (
+ product_property_id INT REFERENCES ProductProperty (id) ON UPDATE CASCADE ON DELETE CASCADE,
+ product_id INT REFERENCES Product (id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+SELECT property_type, property_name, property_description FROM ProductPropertyType INNER JOIN ProductProperty ON ProductPropertyType.id = ProductProperty.property_type_id WHERE ProductProperty.id IN (SELECT product_property_id FROM ProductProperty_Product WHERE product_id=$1);

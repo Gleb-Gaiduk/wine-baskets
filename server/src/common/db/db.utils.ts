@@ -13,3 +13,20 @@ export const isExistingDbProperty = async (
 
   return requestedProperty.rows[0].exists;
 };
+
+export const getTrimmedArrayWithProps = <
+  T extends Array<{ [key: string]: string | number }>
+>(
+  propsArray: T
+): T => {
+  const trimmedArrayWithProperties = propsArray.map(item => {
+    const arr = Object.entries(item);
+    const resultObj = {};
+    arr.forEach(elem => {
+      resultObj[elem[0].trim()] = String(elem[1]).trim();
+    });
+    return resultObj;
+  }) as T;
+
+  return trimmedArrayWithProperties;
+};

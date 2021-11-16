@@ -5,4 +5,5 @@ export const tableNames = {
   ProductCategory: 'productcategory',
   ProductCategory_ProductPropertyType: 'productcategory_productpropertytype',
   ProductCategory_Product: 'productcategory_product',
+  ProductProperty_Product: 'productproperty_product',
 };
