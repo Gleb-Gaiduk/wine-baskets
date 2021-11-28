@@ -9,7 +9,6 @@ export const isExistingDbProperty = async (
     `SELECT EXISTS(SELECT 1 FROM "${tableName}" WHERE ${propertyName} = $1)`,
     [propertyValue]
   );
-  console.log(requestedProperty);
 
   return requestedProperty.rows[0].exists;
 };

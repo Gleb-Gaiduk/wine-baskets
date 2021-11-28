@@ -1,5 +1,5 @@
 import config from '@srcPath/common/config';
-import { CRUD } from '@srcPath/common/db/crud.interface';
+import { CRUD } from '@srcPath/common/types/crud.interface';
 import dbConfig from '@srcPath/common/db/db.config';
 import { isExistingDbProperty } from '@srcPath/common/db/db.utils';
 import ApiError from '@srcPath/common/errors/api.error';
